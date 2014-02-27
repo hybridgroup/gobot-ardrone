@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot-ardrone"
 	"github.com/hybridgroup/gobot-joystick"
