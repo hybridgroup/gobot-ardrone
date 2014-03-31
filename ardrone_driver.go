@@ -17,6 +17,12 @@ type ArdroneInterface interface {
 func (me *ArdroneDriver) Start() bool {
 	return true
 }
+func (me *ArdroneDriver) Halt() bool {
+	return true
+}
+func (me *ArdroneDriver) Init() bool {
+	return true
+}
 
 func NewArdrone(adaptor *ArdroneAdaptor) *ArdroneDriver {
 	d := new(ArdroneDriver)
