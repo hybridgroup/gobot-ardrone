@@ -1,9 +1,5 @@
 # Events
 
-## start
-
-Sent when the device has been started and is ready to use.
-
 ## Flying
 
-Sent when the device has takeoff.
+Sent when the device has taken off.
