@@ -10,8 +10,12 @@ type ArdroneAdaptor struct {
 	drone *ardrone.Client
 }
 
+var ardroneConnect = func() (*ardrone.Client, error) {
+	return ardrone.Connect(ardrone.DefaultConfig())
+}
+
 func (me *ArdroneAdaptor) Connect() bool {
-	drone, err := ardrone.Connect(ardrone.DefaultConfig())
+	drone, err := ardroneConnect()
 	if err != nil {
 		panic(err)
 	}

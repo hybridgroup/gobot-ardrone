@@ -14,13 +14,13 @@ var _ = Describe("ArdroneDriver", func() {
 		driver = NewArdrone(new(ArdroneAdaptor))
 	})
 
-	PIt("Must be able to Start", func() {
+	It("Must be able to Start", func() {
 		Expect(driver.Start()).To(Equal(true))
 	})
-	PIt("Must be able to Init", func() {
+	It("Must be able to Init", func() {
 		Expect(driver.Init()).To(Equal(true))
 	})
-	PIt("Must be able to Halt", func() {
+	It("Must be able to Halt", func() {
 		Expect(driver.Halt()).To(Equal(true))
 	})
 })
