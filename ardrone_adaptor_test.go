@@ -1,7 +1,6 @@
 package gobotArdrone
 
 import (
-	"github.com/hybridgroup/go-ardrone/client"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -9,13 +8,15 @@ import (
 var _ = Describe("ArdroneAdaptor", func() {
 	var (
 		adaptor *ArdroneAdaptor
+		ardrone drone
 	)
 
 	BeforeEach(func() {
-		adaptor = new(ArdroneAdaptor)
-		ardroneConnect = func() (*ardrone.Client, error) {
-			return nil, nil
+		ardrone = new(testDrone)
+		connect = func(me *ArdroneAdaptor) {
+			me.ardrone = ardrone
 		}
+		adaptor = new(ArdroneAdaptor)
 	})
 
 	It("Must be able to Finalize", func() {
@@ -29,5 +30,9 @@ var _ = Describe("ArdroneAdaptor", func() {
 	})
 	It("Must be able to Reconnect", func() {
 		Expect(adaptor.Reconnect()).To(Equal(true))
+	})
+	It("Must be able to return a Drone", func() {
+		adaptor.Connect()
+		Expect(adaptor.Drone()).To(Equal(ardrone))
 	})
 })

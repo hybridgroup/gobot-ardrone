@@ -5,21 +5,23 @@ import (
 	"github.com/hybridgroup/gobot"
 )
 
+type drone interface{}
+
 type ArdroneAdaptor struct {
 	gobot.Adaptor
-	drone *ardrone.Client
+	ardrone drone
 }
 
-var ardroneConnect = func() (*ardrone.Client, error) {
-	return ardrone.Connect(ardrone.DefaultConfig())
-}
-
-func (me *ArdroneAdaptor) Connect() bool {
-	drone, err := ardroneConnect()
+var connect = func(me *ArdroneAdaptor) {
+	ardrone, err := ardrone.Connect(ardrone.DefaultConfig())
 	if err != nil {
 		panic(err)
 	}
-	me.drone = drone
+	me.ardrone = ardrone
+}
+
+func (me *ArdroneAdaptor) Connect() bool {
+	connect(me)
 	return true
 }
 
@@ -33,4 +35,8 @@ func (me *ArdroneAdaptor) Disconnect() bool {
 
 func (me *ArdroneAdaptor) Finalize() bool {
 	return true
+}
+
+func (me *ArdroneAdaptor) Drone() drone {
+	return me.ardrone
 }

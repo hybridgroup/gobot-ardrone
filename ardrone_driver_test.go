@@ -11,7 +11,13 @@ var _ = Describe("ArdroneDriver", func() {
 	)
 
 	BeforeEach(func() {
-		driver = NewArdrone(new(ArdroneAdaptor))
+		connect = func(me *ArdroneAdaptor) {
+			d := new(testDrone)
+			me.ardrone = d
+		}
+		adaptor := new(ArdroneAdaptor)
+		driver = NewArdrone(adaptor)
+		adaptor.Connect()
 	})
 
 	It("Must be able to Start", func() {
@@ -22,5 +28,38 @@ var _ = Describe("ArdroneDriver", func() {
 	})
 	It("Must be able to Halt", func() {
 		Expect(driver.Halt()).To(Equal(true))
+	})
+	It("Must be able to TakeOff", func() {
+		driver.TakeOff()
+	})
+	It("Must be able to Land", func() {
+		driver.Land()
+	})
+	It("Must be able to go Up", func() {
+		driver.Up(1)
+	})
+	It("Must be able to go Down", func() {
+		driver.Down(1)
+	})
+	It("Must be able to go Left", func() {
+		driver.Left(1)
+	})
+	It("Must be able to go Right", func() {
+		driver.Right(1)
+	})
+	It("Must be able to go Forward", func() {
+		driver.Forward(1)
+	})
+	It("Must be able to go Backward", func() {
+		driver.Backward(1)
+	})
+	It("Must be able to go Clockwise", func() {
+		driver.Clockwise(1)
+	})
+	It("Must be able to go CounterClockwise", func() {
+		driver.CounterClockwise(1)
+	})
+	It("Must be able to Hover", func() {
+		driver.Hover()
 	})
 })
