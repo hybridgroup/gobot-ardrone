@@ -7,6 +7,8 @@ This repository contains the Gobot adaptor for ardrone.
 For more information about Gobot, check out the github repo at
 https://github.com/hybridgroup/gobot
 
+[![Build Status](https://travis-ci.org/hybridgroup/gobot-ardrone.svg?branch=master)](https://travis-ci.org/hybridgroup/gobot-ardrone) [![Coverage Status](https://coveralls.io/repos/hybridgroup/gobot-ardrone/badge.png)](https://coveralls.io/r/hybridgroup/gobot-ardrone)
+
 ## Installing
 ```
 go get github.com/hybridgroup/gobot-ardrone
